@@ -7,9 +7,17 @@ module.exports = app => {
       scope: ['profile', 'email'] //what to give access for -google's list for
     })
   );
-
   app.get(
     '/auth/google/callback',
     passport.authenticate('google')
   );
+
+  app.get('/api/logout', (req, res) => {
+    req.logout(); //logout is a function in passport
+    res.send(req.user);
+  });
+
+  app.get('/api/current_user', (req, res) => {
+    res.send(req.user);
+  });
 };

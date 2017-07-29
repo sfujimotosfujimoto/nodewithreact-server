@@ -17,6 +17,9 @@ app.use(
     keys: [keys.cookieKey] // choose a random num/str to encrypt cookie
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 require('./routes/authRoutes')(app);
 // same as
