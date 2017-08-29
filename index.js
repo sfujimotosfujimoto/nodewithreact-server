@@ -8,7 +8,9 @@ require('./models/User'); // this has to be before require services/passport
 require('./models/Survey');
 require('./services/passport'); //not returning anything
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
+
 
 
 const app = express();
