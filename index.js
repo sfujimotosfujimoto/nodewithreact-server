@@ -5,6 +5,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User'); // this has to be before require services/passport
+require('./models/Survey');
 require('./services/passport'); //not returning anything
 
 mongoose.connect(keys.mongoURI);
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 // same as
 // const authRoutes = require('./routes/authRoutes')
 // authRoutes(app)
